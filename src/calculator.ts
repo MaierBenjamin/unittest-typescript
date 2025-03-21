@@ -10,3 +10,6 @@ export function multiplication(factorA: number, factorB: number): number {
   return factorA * factorB;
 }
 
+export function divide(numA: number, numB: number): number {
+  return numA / numB;
+}
