@@ -1,4 +1,4 @@
-import { add, multiplication, subtract, divide, mode} from "./calculator";
+import { add, multiplication, subtract, divide, mode, standardDeviation} from "./calculator";
 
 test("add two to eight is ten", () => {
   // Arrange
@@ -81,14 +81,32 @@ test("division by zero throws an error", () => {
 });
 
 
-test("mode of [1, 1, 2] is [1] (single mode)", () => {
+test("test mode (single)", () => {
   expect(mode([1, 1, 2])).toEqual([1]);
 });
 
-test("mode of [1, 1, 2, 2] is [1, 2] (multiple modes)", () => {
+test("test mode (multiple) ", () => {
   expect(mode([1, 1, 2, 2])).toEqual([1, 2]);
 });
 
-test("mode of empty array is [] (edge case)", () => {
+test("test mode (empty)", () => {
   expect(mode([])).toEqual([]);
+});
+
+
+test("test throws error for empty list", () => {
+  expect(() => standardDeviation([])).toThrow("Cannot calculate standard deviation of empty list");
+});
+
+test("test returns 0 for single value", () => {
+  expect(standardDeviation([5])).toBe(0);
+});
+
+test("test correctly calculates for two values", () => {
+  expect(standardDeviation([1, 3])).toBe(1);  
+});
+
+test("test correctly calculates for multiple values", () => {
+  const result = standardDeviation([1, 2, 3, 4, 5]);
+  expect(result).toBeCloseTo(1.414, 3);  
 });
