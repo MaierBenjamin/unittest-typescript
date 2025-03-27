@@ -16,3 +16,21 @@ export function divide(numA: number, numB: number): number {
   }
   return numA / numB;
 }
+
+export function mode(numbers: number[]): number[] {
+  if (numbers.length === 0) return [];
+
+  const frequencyMap = new Map<number, number>();
+  
+  numbers.forEach(num => {
+    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+  });
+
+  const maxFrequency = Math.max(...frequencyMap.values());
+
+  const modes = Array.from(frequencyMap.entries())
+    .filter(([_, freq]) => freq === maxFrequency)
+    .map(([num]) => num);
+
+  return modes.sort((a, b) => a - b);
+}

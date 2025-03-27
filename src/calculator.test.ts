@@ -1,10 +1,10 @@
-import { add, multiplication, subtract, divide } from "./calculator";
+import { add, multiplication, subtract, divide, mode} from "./calculator";
 
-test("add three to four is five", () => {
+test("add two to eight is ten", () => {
   // Arrange
-  const a: number = 4;
-  const b: number = 3;
-  const expected: number = 7;
+  const a: number = 2;
+  const b: number = 8;
+  const expected: number = 10;
 
   // Act
   const actual = add(a, b);
@@ -13,11 +13,11 @@ test("add three to four is five", () => {
   expect(actual).toBe(expected);
 });
 
-test("subtract four from six is two", () => {
+test("subtract four from seven is three", () => {
   // Arrange
-  const a: number = 6;
+  const a: number = 7;
   const b: number = 4;
-  const expected: number = 2;
+  const expected: number = 3;
 
   // Act
   const actual: number = subtract(a, b);
@@ -26,11 +26,11 @@ test("subtract four from six is two", () => {
   expect(actual).toBe(expected);
 });
 
-test("six times four is 24", () => {
+test("two times three is six", () => {
   // Arrange
-  const a: number = 6;
-  const b: number = 4;
-  const expected: number = 24;
+  const a: number = 2;
+  const b: number = 3;
+  const expected: number = 6;
 
   // Act
   const actual: number = multiplication(a, b);
@@ -40,7 +40,7 @@ test("six times four is 24", () => {
 });
 
 
-test("six minus four is -2", () => {
+test("six minus four is 2", () => {
   // Arrange
   const a: number = 6;
   const b: number = 4;
@@ -78,4 +78,17 @@ test("division by zero throws an error", () => {
 
   // Assert
   expect(act).toThrow(expectedError);
+});
+
+
+test("mode of [1, 1, 2] is [1] (single mode)", () => {
+  expect(mode([1, 1, 2])).toEqual([1]);
+});
+
+test("mode of [1, 1, 2, 2] is [1, 2] (multiple modes)", () => {
+  expect(mode([1, 1, 2, 2])).toEqual([1, 2]);
+});
+
+test("mode of empty array is [] (edge case)", () => {
+  expect(mode([])).toEqual([]);
 });
