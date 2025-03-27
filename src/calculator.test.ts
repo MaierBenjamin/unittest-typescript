@@ -66,3 +66,16 @@ test("6 divided by four is 1.5", () => {
   // Assert
   expect(actual).toBe(expected);
 });
+
+test("division by zero throws an error", () => {
+  // Arrange
+  const a: number = 10;
+  const b: number = 0;
+  const expectedError = "Division by zero not allowed.";
+
+  // Act
+  const act = () => divide(a, b);
+
+  // Assert
+  expect(act).toThrow(expectedError);
+});
